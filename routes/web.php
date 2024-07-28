@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\ShopifySyncController;
 use Illuminate\Support\Facades\Route;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,3 +28,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+// routes/web.php
+
+Route::get('/sync-products', [ShopifySyncController::class, 'syncProductsToShopify'])->name('sync.products');
+Route::get('/sync-first-product-to-shopify', [ShopifySyncController::class, 'syncFirstProductToShopify']);
