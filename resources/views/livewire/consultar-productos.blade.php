@@ -13,19 +13,19 @@
 
     <div class="p-3">
         <button wire:click="consultarApi" class="bg-blue-500 text-white font-bold py-2 px-4 rounded">
-            Consultar API y Guardar Productos
+            1.- Consultar API y Guardar Productos
         </button>
 
         <button wire:click="actualizarImagenes" class="bg-green-500 text-white font-bold py-2 px-4 rounded mt-4">
-            Actualizar Imágenes
+            2.- Actualizar Imágenes
         </button>
     </div>
 
-    <div class="mt-4">
+   {{--  <div class="mt-4">
         <form action="/sync-first-product-to-shopify" method="GET">
             <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
                 Sincronizar Primer Producto con Shopify
             </button>
         </form>
-    </div>
+    </div> --}}
 </div>

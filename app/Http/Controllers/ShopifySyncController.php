@@ -31,6 +31,8 @@ class ShopifySyncController extends Controller
                 foreach ($shopifyProduct['variants'] as $variant) {
                     if ($variant['sku'] == $producto->codigo_barras) {
                         $existingProduct = $shopifyProduct;
+
+                        /* dd($variant['sku'] . ' ' . $producto->nombre_producto); */
                         break 2; // Salir de ambos bucles si encontramos el producto
                     }
                 }
@@ -47,13 +49,13 @@ class ShopifySyncController extends Controller
                         'body_html' => $producto->descripcion,
                         'vendor' => $producto->id_familiar,
                         'product_type' => $producto->categoria,
-                        'status' => 'draft',
                         'variants' => [
                             [
                                 'id' => $existingProduct['variants'][0]['id'],
                                 'price' => $producto->precio_publico,
                                 'sku' => $producto->codigo_barras,
                                 'inventory_quantity' => (int)$producto->cantidad,
+                                'inventory_management' => 'shopify'
                             ],
                         ],
                     ],
@@ -73,12 +75,12 @@ class ShopifySyncController extends Controller
                         'body_html' => $producto->descripcion,
                         'vendor' => $producto->id_familiar,
                         'product_type' => $producto->categoria,
-                        'status' => 'draft',
                         'variants' => [
                             [
                                 'price' => $producto->precio_publico,
                                 'sku' => $producto->codigo_barras,
                                 'inventory_quantity' => (int)$producto->cantidad,
+                                'inventory_management' => 'shopify'
                             ],
                         ],
                     ],
@@ -168,13 +170,13 @@ class ShopifySyncController extends Controller
                     'body_html' => $producto->descripcion,
                     'vendor' => $producto->id_familiar,
                     'product_type' => $producto->categoria,
-                    'status' => 'draft',
                     'variants' => [
                         [
                             'id' => $existingProduct['variants'][0]['id'],
                             'price' => $producto->precio_publico,
                             'sku' => $producto->codigo_barras,
                             'inventory_quantity' => (int)$producto->cantidad,
+                            'inventory_management' => 'shopify'
                         ],
                     ],
                 ],
@@ -194,12 +196,12 @@ class ShopifySyncController extends Controller
                     'body_html' => $producto->descripcion,
                     'vendor' => $producto->id_familiar,
                     'product_type' => $producto->categoria,
-                    'status' => 'draft',
                     'variants' => [
                         [
                             'price' => $producto->precio_publico,
                             'sku' => $producto->codigo_barras,
                             'inventory_quantity' => (int)$producto->cantidad,
+                            'inventory_management' => 'shopify'
                         ],
                     ],
                 ],
